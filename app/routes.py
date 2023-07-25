@@ -15,116 +15,12 @@ def index():
                 'author': {'username': 'Susan'},
                 'body': 'The Oppenheimer movie was so good!'
 
-            },
-            {
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },{
-                'author': {'username' : 'John'},
-                'body': 'Beautiful day in Portland'
-            },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
             ]
 
     return render_template('index.html', title='Home', user=user, posts=posts)
+
+
+@app.route('/index/something')
+def smth():
+    return render_template('smth.html')
