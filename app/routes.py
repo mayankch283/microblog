@@ -43,6 +43,6 @@ def login():
         	#flash() : useful way to show a message to the user. Lets user know if some action has been useful or not.
         	#When you call the flash() function, Flask stores the message, but flashed messages will not magically appear in web pages.
         	#The templates of the application need to render these flashed messages in a way that works for the site layout.
-		flash('Login requested for user {}, remember_me={}'.format(form.username.data, form.remember_me.data))
-		return redirect(url_for('index'))
+			flash('Login requested for user {}, remember_me={}'.format(form.username.data, form.remember_me.data))
+			return redirect(url_for('index'))
 	return render_template('login.html', title = 'Sign In', form = form)
