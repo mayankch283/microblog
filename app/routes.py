@@ -1,6 +1,9 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import LoginForm
+from flask_login import current_user, login_user
+from app.models import User
+from flask_login import logout_user
 
 @app.route('/')
 @app.route('/index')
@@ -31,6 +34,8 @@ By providing methods argument, we tell Flask which request method should be acce
 '''
 @app.route('/login', methods=['GET', 'POST']) 
 def login():
+	if current_user.is_authenticated:
+		return redirect(url_for('index'))
 	form = LoginForm()
 
 	'''
@@ -40,9 +45,15 @@ def login():
 	and ONLY IF EVERYTHING IS RIGHT, IT WILL RETURN TRUE : indicating that the data is valid and can be processed by the application. Even if one field fails validation, it will return False"
 	'''
 	if form.validate_on_submit():
-        	#flash() : useful way to show a message to the user. Lets user know if some action has been useful or not.
-        	#When you call the flash() function, Flask stores the message, but flashed messages will not magically appear in web pages.
-        	#The templates of the application need to render these flashed messages in a way that works for the site layout.
-			flash('Login requested for user {}, remember_me={}'.format(form.username.data, form.remember_me.data))
+			user = User.query.filter_by(username=form.username.data).first()
+			if user is None or not user.check_password(form.password.data):
+				flash('Invalid username or password')
+				return redirect(url_for('login'))
+			login_user(user, remember=form.remember_me.data)
 			return redirect(url_for('index'))
 	return render_template('login.html', title = 'Sign In', form = form)
+
+@app.route('/logout')
+def logout():
+	logout_user()
+	return redirect(url_for('index'))
